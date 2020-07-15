@@ -21,7 +21,7 @@
 {% endblock %}
 
 {% block content %}
-<div id="content">
+<div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
         <h2>{{ object.title }}</h2>
@@ -44,6 +44,17 @@
 
         <div>
             {{ object.content|linebreaks }}
+        </div>
+        <br>
+        <div>
+            <b>TAGS</b> <i class="fas fa-tag"></i>
+            {% load taggit_templatetags2_tags %}
+            {% get_tags_for_object object as "tags" %}
+            {% for tag in tags %}
+            <a href="{% url 'blog:tagged_object_list' tag.name %}">{{tag.name}}</a>
+            {% endfor %}
+            &emsp;
+            <a href="{% url 'blog:tag_cloud' %}"><span class="btn btn-info btn-sm">TagCloud</span> </a>
         </div>
       </div>
     </div>

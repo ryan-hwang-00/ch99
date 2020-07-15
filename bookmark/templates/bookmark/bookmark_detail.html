@@ -1,20 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Django Bookmark Detail</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-<div id="content">
+{% load static %}
 
-    <h1>{{ object.title }}</h1>
+{% block title %} Django Bookmark Detail {% endblock %}
 
-    <ul>
-        <li>URL: <a href="{{ object.url }}">{{ object.url }}</a></li>
-    </ul>
+{% block header %}
+<header class="masthead" style="background-image: url({% static 'img/post-bg.jpg' %})">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>북마크 상세 페이지</h1>
+            <span class="subheading">북마크 상세 입니다.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+{% endblock %}
 
+{% block content %}
+
+<div class ="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-preview">
+            <h1>{{ object.title }}</h1>
+
+            <ul>
+                <li>URL: <a href="{{ object.url }}">{{ object.url }}</a></li>
+            </ul>
+        </div>
+      </div>
+    </div>
 </div>
 
-</body>
-</html>
+{% endblock %}
+
+{% block extra-script %}{% endblock %}
