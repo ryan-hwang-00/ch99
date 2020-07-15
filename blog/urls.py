@@ -18,7 +18,7 @@ urlpatterns = [
 
     path('archive/<int:year>', views.PostYAV.as_view(), name='post_year_archive'),
 
-    path('archive/<int:year>/<str:month>', views.PostMAV.as_view(), name='post_month_archive'),
+    path('archive/<int:year>/<str:month>', views.PostMAV.as_view(month_format='%m'), name='post_month_archive'),
 
     path('archive/<int:year>/<str:month>/<int:day>', views.PostDAV.as_view(), name='post_day_archive'),
 
