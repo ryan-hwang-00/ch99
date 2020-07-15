@@ -1,12 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>post_all</title>
-</head>
-<body>
-    <h1>Blog List</h1>
-    <br>
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} post_all {% endblock %}
+
+{% block header %}
+<header class="masthead" style="background-image: url({% static 'img/home-bg.jpg' %})">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1> 게시판 </h1>
+            <span class="subheading"> 게시판 입니다.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+{% endblock %}
+
+{% block content %}
     {% for post in posts %}
         <h3><a href='{{ post.get_absolute_url }}'>{{ post.title }}</a></h3>
         {{ post.modify_dt|date:"N d, Y"}}
@@ -28,5 +42,6 @@
             {% endif %}
         </span>
     </div>
-</body>
-</html>
+{% endblock %}
+
+{% block extra-script %}{% endblock %}
