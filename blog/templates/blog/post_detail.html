@@ -1,31 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>post_detail</title>
-</head>
-<body>
-    <h2>{{ object.title }}</h2>
+{% extends 'base.html' %}
 
-    <p>
-        {% if object.get_previous %}
-        <a href="{{ object.get_previous.get_absolute_url }}" title="View previous post">
-            &laquo;- {{ object.get_previous }}
-        </a>
-        {% endif %}
+{% load static %}
 
-        {% if object.get_next %}
-        | <a href="{{ object.get_next.get_absolute_url }}" title="View next post">
-        {{ object.get_next }} -&raquo;
-    </a>
-        {% endif %}
-    </p>
+{% block title %} post_detail {% endblock %}
 
-    <p>{{ object.modify_dt|date:"j F Y" }}</p>
-    <br>
-
-    <div>
-        {{ object.content|linebreaks }}
+{% block header %}
+<header class="masthead" style="background-image: url({% static 'img/home-bg.jpg' %})">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>블로그 상세</h1>
+            <span class="subheading">블로그 상세 입니다.</span>
+          </div>
+        </div>
+      </div>
     </div>
-</body>
-</html>
+  </header>
+{% endblock %}
+
+{% block content %}
+<div id="content">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <h2>{{ object.title }}</h2>
+        <p>
+            {% if object.get_previous %}
+            <a href="{{ object.get_previous.get_absolute_url }}" title="View previous post">
+                &laquo;- {{ object.get_previous }}
+            </a>
+            {% endif %}
+
+            {% if object.get_next %}
+            | <a href="{{ object.get_next.get_absolute_url }}" title="View next post">
+            {{ object.get_next }} -&raquo;
+        </a>
+            {% endif %}
+        </p>
+
+        <p>{{ object.modify_dt|date:"j F Y" }}</p>
+        <br>
+
+        <div>
+            {{ object.content|linebreaks }}
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra-script %}{% endblock %}
