@@ -1,30 +1,26 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load widget_tweaks %}
 {% load static %}
-
-{% block title %} login.html {% endblock %}
-
+{% block title %}bookmark_form.html{% endblock %}
 {% block header %}
-<header class="masthead" style="background-image: url({% static 'img/about-bg.jpg' %})">
+<header class="masthead" style="background-image: url({% static 'img/post-bg.jpg' %})">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="site-heading">
-            <h1>로그인 페이지</h1>
-            <span class="subheading">로그인 입니다.</span>
+            <h1>북마크 작성 페이지</h1>
+            <span class="subheading">북마크 작성 입니다.</span>
           </div>
         </div>
       </div>
     </div>
   </header>
 {% endblock %}
-
-
 {% block content %}
 
-    <h1>Please Login</h1>
-    <p class="font-italic">Please enter your id and password.</p>
+    <h1>Bookmark Create/Update - {{user}}</h1>
+    <p class="font-italic">This is a creation or update form for your bookmark.</p>
 
     {% if form.errors %}
     <div class="alert alert-danger">
@@ -36,22 +32,22 @@
     <form action="." method="post" class="card pt-3">{% csrf_token %}
 
         <div class="form-group row">
-            {{ form.username|add_label_class:"col-form-label col-sm-2 ml-3 font-weight-bold" }}
+            {{ form.title|add_label_class:"col-form-label col-sm-2 ml-3 font-weight-bold" }}
             <div class="col-sm-5">
-                {{ form.username|add_class:"form-control"|attr:"autofocus" }}
+                {{ form.title|add_class:"form-control"|attr:"autofocus" }}
             </div>
         </div>
+
         <div class="form-group row">
-            {{ form.password|add_label_class:"col-form-label col-sm-2 ml-3 font-weight-bold" }}
+            {{ form.url|add_label_class:"col-form-label col-sm-2 ml-3 font-weight-bold" }}
             <div class="col-sm-5">
-                {{ form.password|add_class:"form-control" }}
+                {{ form.url|add_class:"form-control" }}
             </div>
         </div>
 
         <div class="form-group">
             <div class="offset-sm-2 col-sm-5">
-                <input type="submit" value="Log in" class="btn btn-info"/>
-                <input type="hidden" name="next" value="{{ next }}" />
+                <input type="submit" value="Submit" class="btn btn-info"/>
             </div>
         </div>
 
@@ -59,11 +55,4 @@
 
 {% endblock %}
 
-
-
 {% block extra-script %}{% endblock %}
-
-
-
-
-
