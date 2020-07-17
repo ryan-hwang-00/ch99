@@ -19,14 +19,19 @@
 {% endblock %}
 
 {% block content %}
+<div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <h1>Post Delete</h1>
+        <br>
 
-    <h1>Post Delete</h1>
-    <br>
-
-    <form action="." method="post">{% csrf_token %}
-        <p>Are you sure you want to delete "{{ object }}" ?</p>
-        <input type="submit" value="Confirm" class="btn btn-danger btn-sm" />
-    </form>
+        <form action="." method="post">{% csrf_token %}
+            <p>Are you sure you want to delete "{{ object }}" ?</p>
+            <input type="submit" value="Confirm" class="btn btn-danger btn-sm" />
+        </form>
+      </div>
+    </div>
+</div>
 
 {% endblock %}
 
